@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Recipe} from './recipe.model';
 
 @Injectable()
 export class RecipeService {
+
+  recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe('Baked Apples', 'Baked apples recipe wording here', 'https://www.simplyrecipes.com/wp-content/uploads/2014/11/baked-apples-horiz-a-1800.jpg'),
