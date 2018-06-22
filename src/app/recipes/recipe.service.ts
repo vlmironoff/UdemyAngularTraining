@@ -3,13 +3,15 @@ import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs/Subject';
+import {DataStorageService} from '../shared/data-storage.service';
+import {Response} from '@angular/http';
 
 @Injectable()
 export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
+  private recipes: Recipe[] = []; /*= [
     new Recipe(
       'Baked Apples',
       'Baked apples recipe wording here',
@@ -28,9 +30,9 @@ export class RecipeService {
         new Ingredient('Dough', 3)
       ]
     )
-  ];
+  ]*/
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService, private dataService: DataStorageService) { }
 
   getRecipes() {
     return this.recipes.slice();
@@ -57,6 +59,19 @@ export class RecipeService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  pushRecipes() {
+    return this.dataService.storeRecipes(this.recipes);
+  }
+
+  fetchRecipes() {
+    this.dataService.fetchRecipes().subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+      }
+    );
   }
 
 }
