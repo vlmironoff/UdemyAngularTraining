@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {DataStorageService} from '../shared/data-storage.service';
 import {Response} from '@angular/http';
 import {RecipeService} from '../recipes/recipe.service';
@@ -24,6 +24,10 @@ export class HeaderComponent {
 
   onFetchData() {
     this.recipeService.fetchRecipes();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }
