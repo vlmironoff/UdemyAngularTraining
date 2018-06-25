@@ -11,9 +11,9 @@ import {AuthService} from '../../auth/auth.service';
 export class HeaderComponent {
 
   constructor(
-    private dataStorageService: DataStorageService,
-    private recipeService: RecipeService,
-    private authService: AuthService) {}
+     public dataStorageService: DataStorageService,
+     public recipeService: RecipeService,
+     public authService: AuthService) {}
 
   onSaveData() {
     this.recipeService.pushRecipes().subscribe(
