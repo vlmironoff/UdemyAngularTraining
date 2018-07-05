@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Recipe} from './recipe.model';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs/Subject';
 import {DataStorageService} from '../shared/data-storage.service';
 
@@ -30,7 +29,7 @@ export class RecipeService {
     )
   ]*/
 
-  constructor(private slService: ShoppingListService, private dataService: DataStorageService) { }
+  constructor(private dataService: DataStorageService) { }
 
   getRecipes() {
     return this.recipes.slice();
