@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Recipe} from './recipe.model';
-import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Subject} from 'rxjs/Subject';
 import {DataStorageService} from '../shared/data-storage.service';
-import {Response} from '@angular/http';
 
 @Injectable()
 export class RecipeService {
@@ -40,10 +38,6 @@ export class RecipeService {
 
   getRecipe(id: number) {
     return this.recipes[id];
-  }
-
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
   }
 
   addRecipe(recipe: Recipe) {
