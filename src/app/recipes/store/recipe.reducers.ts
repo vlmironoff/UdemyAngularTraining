@@ -1,6 +1,5 @@
 import {Recipe} from '../recipe.model';
 import * as RecipeActions from '../store/recipe.actions';
-import {s} from '@angular/core/src/render3';
 
 export interface FeatureState {
   recipes: State;
