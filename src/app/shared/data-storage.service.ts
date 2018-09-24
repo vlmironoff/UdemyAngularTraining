@@ -21,19 +21,7 @@ export class DataStorageService {
 
   fetchRecipes() {
     // const token = this.authService.getToken();
-    return this.httpClient.get<Recipe[]>('https://ng-recipe-book-ad2a1.firebaseio.com/recipes.json')
-    .pipe(
-      map(
-        (recipes) => {
-          console.log(recipes);
-          for (const recipe of recipes) {
-            if (!recipe['ingredients']) {
-              recipe['ingredients'] = [];
-            }
-          }
-          return recipes;
-        }
-    ));
+
   }
 
 }
