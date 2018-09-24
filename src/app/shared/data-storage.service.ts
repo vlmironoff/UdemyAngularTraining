@@ -14,9 +14,6 @@ export class DataStorageService {
       observe: 'events',
       params: new HttpParams().set('auth', token)
     });*/
-
-    const req = new HttpRequest('PUT', 'https://ng-recipe-book-ad2a1.firebaseio.com/recipes.json', recipes, {reportProgress: true});
-    return this.httpClient.request(req);
   }
 
   fetchRecipes() {
